@@ -1,19 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Bootstrap starter</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Bootstrap starter</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <div class="container text-center">Lorem ipsum dolor sit amet.</div>
+  <main>
+
+    <header class="py-3 mb-2 text-center">
+      <div class="container">
+        <h1 class="h3 mb-0">Movies catalog</h1>
+      </div>
+    </header>
 
 
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <div class="container-xl">
+      <div class="row">
+        <section class="col-md-4 mb-4">
+          <div class="container">
+            <h2 class="sr-only">Movie search form</h2>
+
+            <form class="js-search-form" action="https://echo.htmlacademy.ru" method="GET" autocomplete="false">
+              <div class="form-group">
+                <input class="form-control js-search-form__title-input" type="search" name="title" placeholder="Avengers" aria-label="Title">
+              </div>
+
+              <div class="form-group">
+                <input class="form-control js-search-form__rating-input" type="number" step="any" name="min_rating" placeholder="7.5" aria-label="Minimum rating">
+              </div>
+
+              <div class="form-group">
+                <select class="form-control js-search-form__genre-select" name="genre" aria-label="Genre">
+                  <option value="all" selected>All</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <select class="form-control js-search-form__sort-select" name="sort" aria-label="Sorting">
+                  <option value="rating_desc" selected>Rating (high to low)</option>
+                  <option value="rating_asc">Rating (low to high)</option>
+                  <option value="az">A-Z</option>
+                  <option value="za">Z-A</option>
+                  <option value="year_desc">Year (new to old)</option>
+                  <option value="year_asc">Year (old to new)</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit">Search</button>
+            </form>
+          </div>
+        </section>
+
+
+        <section class="col-md-8">
+          <h2 class="h5">Search results</h2>
+          <div class="alert alert-info">Use the form on the left to search for a movie</div>
+
+          <ul class="search-results row list-unstyled">
+
+          </ul>
+        </section>
+      </div><!-- row -->
+    </div><!-- container -->
+
+  </main>
+
+
+  <!-- TEMPLATES -->
+
+  <!-- Search result template -->
+  <template id="search-result-template">
+    <li class="search-results__item movie col-sm-6 mb-4">
+      <div class="card">
+        <img class="movie__poster card-img-top" src="https://picsum.photos/id/870/300" alt="" width="300" height="200">
+
+        <div class="card-body">
+          <h3 class="movie__title h5"></h3>
+          <p class="card-text">
+            <img src="img/calendar.svg" alt="Calendar" width="25" height="25">
+            <span class="movie__year"></span>
+          </p>
+
+          <p class="card-text">
+            <img src="img/star.svg" alt="Star" width="25" height="25">
+            <span class="movie__rating"></span>
+          </p>
+
+          <p class="card-text">
+            <a class="movie__trailer-link" href="" target="_blank">Watch trailer</a>
+          </p>
+        </div>
+      </div>
+    </li>
+  </template>
+
+
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/normalized-movies.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
