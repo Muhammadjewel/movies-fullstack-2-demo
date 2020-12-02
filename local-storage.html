@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local storage</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <button class="btn btn-danger">O'chirib tashlash</button>
+    <h1 class="name-heading"></h1>
+  </div>
+
+
+  <script src="js/utils.js"></script>
+  <script>
+
+    $_('.btn-danger').addEventListener('click', () => {
+      localStorage.clear();
+    });
+
+    if (!localStorage.getItem('name')) {
+      localStorage.setItem('name', prompt('Ismingiz?'));
+    }
+    var name = localStorage.getItem('name');
+
+    $_('.name-heading').textContent = name;
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event delegation - hodisani boshqa elementga yuklash?</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container py-3">
+    <button class="js-bosvol btn btn-primary" type="button">Hello</button>
+    <button class="js-bosvol btn btn-primary" type="button">Hello</button>
+    <button class="badabum" type="button">Hello</button>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script>
+    /* var elsButton = $$_('.btn');
+
+    elsButton.forEach(function (elButton) {
+      elButton.addEventListener('click', function () {
+        alert('Assalomu alaykum');
+      });
+    }); */
+
+    var elContainer = $_('.container');
+    elContainer.addEventListener('click', function (evt) {
+      if (evt.target.matches('.js-bosvol, .badabum')) {
+        alert('Iiiii, bosvoldiz');
+      }
+      // console.log(evt);
+    });
+
+    var elNewButton = createElement('button', 'js-bosvol btn btn-primary', 'Men yangiman, akalar :)');
+    elContainer.appendChild(elNewButton);
+
+  </script>
+</body>
+</html>

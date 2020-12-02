@@ -20,40 +20,49 @@
 
     <div class="container-xl">
       <div class="row">
-        <section class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4">
           <div class="container">
-            <h2 class="sr-only">Movie search form</h2>
+            <section class="mb-4">
+              <h2 class="sr-only">Movie search form</h2>
 
-            <form class="js-search-form" action="https://echo.htmlacademy.ru" method="GET" autocomplete="false">
-              <div class="form-group">
-                <input class="form-control js-search-form__title-input" type="search" name="title" placeholder="Avengers" aria-label="Title">
-              </div>
+              <form class="js-search-form" action="https://echo.htmlacademy.ru" method="GET" autocomplete="off">
+                <div class="form-group">
+                  <input class="form-control js-search-form__title-input" type="search" name="title" placeholder="Avengers"
+                    aria-label="Title">
+                </div>
 
-              <div class="form-group">
-                <input class="form-control js-search-form__rating-input" type="number" step="any" name="min_rating" placeholder="7.5" aria-label="Minimum rating">
-              </div>
+                <div class="form-group">
+                  <input class="form-control js-search-form__rating-input" type="number" step="any" name="min_rating"
+                    placeholder="7.5" value="5" aria-label="Minimum rating">
+                </div>
 
-              <div class="form-group">
-                <select class="form-control js-search-form__genre-select" name="genre" aria-label="Genre">
-                  <option value="all" selected>All</option>
-                </select>
-              </div>
+                <div class="form-group">
+                  <select class="form-control js-search-form__genre-select" name="genre" aria-label="Genre">
+                    <option value="All" selected>All</option>
+                  </select>
+                </div>
 
-              <div class="form-group">
-                <select class="form-control js-search-form__sort-select" name="sort" aria-label="Sorting">
-                  <option value="rating_desc" selected>Rating (high to low)</option>
-                  <option value="rating_asc">Rating (low to high)</option>
-                  <option value="az">A-Z</option>
-                  <option value="za">Z-A</option>
-                  <option value="year_desc">Year (new to old)</option>
-                  <option value="year_asc">Year (old to new)</option>
-                </select>
-              </div>
+                <div class="form-group">
+                  <select class="form-control js-search-form__sort-select" name="sort" aria-label="Sorting">
+                    <option value="rating_desc" selected>Rating (high to low)</option>
+                    <option value="rating_asc">Rating (low to high)</option>
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                    <option value="year_desc">Year (new to old)</option>
+                    <option value="year_asc">Year (old to new)</option>
+                  </select>
+                </div>
 
-              <button class="btn btn-primary btn-block" type="submit">Search</button>
-            </form>
+                <button class="btn btn-primary btn-block" type="submit">Search</button>
+              </form>
+            </section>
+
+            <section class="mb-4">
+              <h2>Bookmarked movies</h2>
+              <ul class="bookmarked-movies list-group"></ul>
+            </section>
           </div>
-        </section>
+        </div>
 
 
         <section class="col-md-8">
@@ -61,13 +70,35 @@
           <div class="alert alert-info">Use the form on the left to search for a movie</div>
 
           <ul class="search-results row list-unstyled">
-
           </ul>
         </section>
       </div><!-- row -->
     </div><!-- container -->
 
   </main>
+
+
+  <!-- MODAL -->
+
+  <section class="movie-info-modal modal fade" id="movie-info-modal" tabindex="-1" aria-labelledby="movie-info-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="movie-info-modal__title h4 modal-title" id="movie-info-title"></h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- TEMPLATES -->
@@ -90,11 +121,22 @@
             <span class="movie__rating"></span>
           </p>
 
-          <p class="card-text">
-            <a class="movie__trailer-link" href="" target="_blank">Watch trailer</a>
+          <p class="card-text d-flex flex-column flex-md-row flex-wrap justify-content-around">
+            <a class="movie__trailer-link m-1 m-xl-0 btn btn-outline-primary btn-sm" href="" target="_blank">Watch trailer</a>
+            <button class="m-1 m-xl-0 btn btn-outline-info btn-sm js-movie-modal-opener" type="button" data-toggle="modal" data-target="#movie-info-modal">More info</button>
+            <button class="m-1 m-xl-0 btn btn-outline-success btn-sm js-movie-bookmark" type="button">Bookmark</button>
           </p>
         </div>
       </div>
+    </li>
+  </template>
+
+
+  <!-- Bookmarked movie template -->
+  <template id="bookmarked-movie-template">
+    <li class="bookmarked-movie list-group-item">
+      <h3 class="bookmarked-movie__title h6"></h3>
+      <button class="btn btn-sm btn-danger js-remove-bookmarked-movie-button">Remove</button>
     </li>
   </template>
 
